@@ -10,11 +10,20 @@ This project applies various binarization techniques to fingerprint images and c
 5. **Niblack's Method**: A local thresholding method that considers the local mean and standard deviation.
 6. **Sauvola's Method**: An improvement over Niblack's method, better suited for images with varying illumination.
 
+## Advanced Fingerprint Processing
+After binarization, the project performs:
+1. **Skeletonization (Thinning)**: Applying **Hilditch's Algorithm** to obtain a single-pixel wide representation of the fingerprint ridges.
+2. **Minutiae Extraction**: Identifying ridge terminations and bifurcations using the **Crossing Number (CN) method**.
+3. **Database Storage**: Extracted minutiae (templates) and image paths are stored in an **SQLite database** (`outputs/fingerprints.db`) with unique IDs for each fingerprint.
+
 ## Project Structure
 - `data/`: Contains the fingerprint datasets (DB1_B, DB2_B, DB3_B, DB4_B).
 - `src/binarization.py`: Implementation of the binarization algorithms.
-- `main.py`: Main script to process images and generate comparison plots.
-- `outputs/`: Directory where comparison results are saved.
+- `src/thinning.py`: Implementation of Hilditch's and Zhang-Suen thinning algorithms.
+- `src/minutiae.py`: Implementation of minutiae extraction using Crossing Number.
+- `src/database.py`: Logic for SQLite database initialization and data storage.
+- `main.py`: Main script to process images, perform thinning, extract minutiae, and generate reports.
+- `outputs/`: Directory where comparison results, the database, and HTML reports are saved.
 
 ## Requirements
 Install the required dependencies using:
