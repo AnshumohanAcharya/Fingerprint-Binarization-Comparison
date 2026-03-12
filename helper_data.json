@@ -1,0 +1,11 @@
+{
+  "helper_data": "0d07cf997af0619235c375f42ec152a5ee6c3d1f9a6d2c27a6026278872a8d80",
+  "key_hash": "d47d9c5f85215cc1fcea8ec0827bd8df2323f0c20130af9c2f8ae68b23dd81dc",
+  "template_size": 32,
+  "grid_size": [
+    16,
+    16
+  ],
+  "enrollment_file": "data/DB1_B/101_1.tif",
+  "timestamp": "2026-03-12T10:00:00Z"
+}

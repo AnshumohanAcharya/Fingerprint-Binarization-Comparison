@@ -171,4 +171,52 @@ Feel free to enhance the system with:
 
 ## 📄 License
 This project is for educational and research purposes.
+The results will be stored in the `outputs/` directory. Open `outputs/index.html` in your web browser to view the consolidated report.
+
+---
+
+## Secure Encryption Prototype
+
+A second set of utilities implements a **fuzzy commitment** scheme for
+fingerprint‑based file encryption.  You can enroll a document by binding a
+random AES key to a fingerprint image, then decrypt it later only if the same
+(or sufficiently similar) fingerprint is presented.
+
+### Modules
+* `src/biometric.py` – extract minutiae points and convert them to a fixed‑size
+  binary template.
+* `src/fuzzy_commitment.py` – bind a key to a template and recover it using
+  Reed‑Solomon error correction.
+* `src/crypto.py` – simple AES‑GCM file encryption/decryption.
+* `src/secure_system.py` – command‑line wrapper for enrollment and verification.
+
+### Requirements
+The encryption prototype adds two new dependencies:
+```
+pycryptodome
+reedsolo
+```
+which are included in `requirements.txt`.
+
+### Usage
+Enroll a file:
+```bash
+python3 -m src.secure_system enroll \
+    --fingerprint data/DB1_B/101_1.tif \
+    --infile secret.pdf \
+    --outfile secret.enc \
+    --helper helper.json
+```
+
+Later, present a fingerprint to decrypt:
+```bash
+python3 -m src.secure_system verify \
+    --fingerprint data/DB1_B/101_1.tif \
+    --helper helper.json \
+    --encrypted secret.enc \
+    --out recovered.pdf
+```
+
+A demonstration notebook (`fuzzy_commitment_demo.ipynb`) shows the full
+workflow on the sample dataset; open it in Jupyter or VS Code.
 
