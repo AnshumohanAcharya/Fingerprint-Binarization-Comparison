@@ -9,7 +9,7 @@ env/
 # Data and Outputs (usually ignored in version control if large)
 data/
 outputs/
-*.zip
+
 
 # OS
 .DS_Store
